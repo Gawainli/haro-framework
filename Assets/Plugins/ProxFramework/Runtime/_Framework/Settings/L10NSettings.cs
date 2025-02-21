@@ -6,7 +6,7 @@ namespace ProxFramework.Runtime.Settings
     [System.Serializable]
     public class L10NFontSettings
     {
-        public string language;
+        public SystemLanguage language;
         public string fontAssetPath;
         public string fontMaterialPath;
         public float fontSizeScaler = 1;

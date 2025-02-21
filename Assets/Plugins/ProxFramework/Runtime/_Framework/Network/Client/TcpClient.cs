@@ -49,7 +49,7 @@ namespace ProxFramework.Network
             }
             catch (Exception e)
             {
-                PLogger.Exception(e.ToString());
+                PLogger.Exception("Tcp Connect Exception:", e);
             }
         }
 

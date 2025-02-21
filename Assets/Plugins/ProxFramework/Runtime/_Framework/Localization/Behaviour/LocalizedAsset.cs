@@ -31,7 +31,7 @@ namespace ProxFramework.Localization
             AssetDatabase.SaveAssets();
         }
 #endif
-        protected override async void ApplyLocalization()
+        public override async void ApplyLocalization()
         {
             try
             {
@@ -43,14 +43,7 @@ namespace ProxFramework.Localization
 
                 var localizedPath = LocalizationModule.GetLocalizeAsstPath(assetPath);
                 T asset = null;
-                if (AssetModule.initialized)
-                {
-                    asset = await AssetModule.LoadAssetAsync<T>(localizedPath);
-                }
-                else
-                {
-                    asset = AssetDatabase.LoadAssetAtPath<T>(localizedPath);
-                }
+                asset = await AssetModule.LoadAssetAsync<T>(localizedPath);
 
                 if (asset == null)
                 {

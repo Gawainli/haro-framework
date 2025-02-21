@@ -30,7 +30,7 @@ namespace ProxFramework.Asset
 
         public void Exception(Exception exception)
         {
-            PLogger.Exception(exception.ToString());
+            PLogger.Exception("Asset Module Exception:", exception);
         }
     }
 

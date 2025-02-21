@@ -5,8 +5,7 @@ namespace ProxFramework.Localization
     public abstract class LocalizedBehaviour : MonoBehaviour
     {
         [SerializeField] private bool _enableLocalization = true;
-        protected abstract void ApplyLocalization();
-
+        public abstract void ApplyLocalization();
         protected virtual void Awake()
         {
         }

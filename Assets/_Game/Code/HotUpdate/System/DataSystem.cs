@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
+using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using ProxFramework;
 using ProxFramework.Asset;
@@ -80,6 +81,7 @@ namespace GameName.Core
 
         private static async UniTask LoadAllBin(string[] tableNames)
         {
+            _dataTableCache.Clear();
             foreach (var tableName in tableNames)
             {
                 var assetLocation =

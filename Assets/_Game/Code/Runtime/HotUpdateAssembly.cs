@@ -196,8 +196,7 @@ namespace Prox.GameName.Runtime
                 return type;
             }
 
-            PLogger.Info($"Type: {typeFullName} not found in cache, try to get from default assemblies");
-            
+            PLogger.Warning($"Type: {typeFullName} not found in cache, try to get from update assemblies");
             foreach (var hotUpdateName in SettingsUtil.GlobalSettings.hclrSettings.hotUpdateAssemblies)
             {
                 var assembly = AppDomain.CurrentDomain.GetAssemblies()
@@ -206,15 +205,16 @@ namespace Prox.GameName.Runtime
                 type = assembly.GetType(typeFullName);
                 if (type != null)
                 {
-                    break;
+                    _cachedTypes.TryAdd(typeFullName, type);
+                    return type;
                 }
             }
-            
-            if (type != null)
-            {
-                _cachedTypes.TryAdd(typeFullName, type);
-            }
 
+            PLogger.Warning(
+                $" Type: {typeFullName} not found in update assemblies, try to get from default assemblies");
+            type = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(a => a.GetExportedTypes())
+                .FirstOrDefault(t => t.FullName == typeFullName);
             return type;
         }
     }

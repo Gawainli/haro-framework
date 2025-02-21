@@ -163,7 +163,7 @@ namespace ProxFramework.Network
             }
             catch (Exception e)
             {
-                PLogger.Exception(e.ToString());
+                PLogger.Exception("Tcp Close Exception", e);
             }
             finally
             {

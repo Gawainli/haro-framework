@@ -32,7 +32,7 @@ namespace Prox.GameName.Runtime
             }
             catch (Exception e)
             {
-                PLogger.Exception(e.ToString());
+                PLogger.Exception("Download File Exception:", e);
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Text;
 
 namespace ProxFramework
@@ -56,9 +57,10 @@ namespace ProxFramework
             Log(LogLevel.Error, msg);
         }
 
-        public static void Exception(string msg)
+        public static void Exception(string msg, Exception e)
         {
-            Log(LogLevel.Exception, msg);
+            Log(LogLevel.Exception, $"{msg}{e.Message}");
+            UnityEngine.Debug.Log(e.StackTrace);
         }
 
         private static void Log(LogLevel type, string logString)
