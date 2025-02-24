@@ -4,15 +4,23 @@ namespace ProxFramework.Localization
 {
     public abstract class LocalizedBehaviour : MonoBehaviour
     {
-        [SerializeField] private bool _enableLocalization = true;
+        [SerializeField] private bool enableLocalization = true;
+        [SerializeField] protected string localizationKey;
+
+        public virtual void AutoSetL10NKey()
+        {
+            localizationKey = $"{transform.parent.name}_{transform.name}";
+        }
+        
         public abstract void ApplyLocalization();
+
         protected virtual void Awake()
         {
         }
 
         protected void OnEnable()
         {
-            if (_enableLocalization && LocalizationModule.initialized)
+            if (enableLocalization && LocalizationModule.initialized)
             {
                 LocalizationModule.OnLanguageChanged += ApplyLocalization;
                 ApplyLocalization();
@@ -21,7 +29,7 @@ namespace ProxFramework.Localization
 
         protected void OnDisable()
         {
-            if (_enableLocalization && LocalizationModule.initialized)
+            if (enableLocalization && LocalizationModule.initialized)
             {
                 LocalizationModule.OnLanguageChanged -= ApplyLocalization;
             }

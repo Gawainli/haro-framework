@@ -1,5 +1,4 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace ProxFramework.Localization
 {
@@ -7,7 +6,6 @@ namespace ProxFramework.Localization
     public class LocalizedText : LocalizedBehaviour
     {
         private TMPro.TMP_Text _text;
-        [SerializeField] private string localizationKey;
 
         protected override void Awake()
         {

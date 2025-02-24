@@ -22,10 +22,10 @@ namespace cfg
             {
                 switch (languageCode)
                 {
-                    case "zh-Hans":
+                    case "zh-hans":
                         value = textL10N.Hans;
                         break;
-                    case "zh-Hant":
+                    case "zh-hant":
                         value = textL10N.Hant;
                         break;
                     case "en":

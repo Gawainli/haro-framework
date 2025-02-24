@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 157886979}
   - component: {fileID: 157886977}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Test Localization
+  m_text: Test L10N
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 12997b2c463933e4abe6c75b9e3fb61e, type: 2}
   m_sharedMaterial: {fileID: 7104942137917391791, guid: 12997b2c463933e4abe6c75b9e3fb61e,
@@ -208,8 +208,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -270,8 +270,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e228991e3ae741b8805c02398d313e92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enableLocalization: 1
-  localizationKey: Test1
+  enableLocalization: 1
+  localizationKey: UITestLocalization_Text
 --- !u!1 &189167462
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,7 +435,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1602598627}
-  - {fileID: 1936421280}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -612,6 +611,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 157886976}
+  - {fileID: 1936421280}
   m_Father: {fileID: 643686747}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -708,12 +708,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1936421279}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 643686747}
+  m_Father: {fileID: 1602598627}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -732,8 +732,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eafb3f2049745719907dad1e884f5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enableLocalization: 1
-  assetPath: Assets/_Game/Art/UI/Sprite/test.jpg
+  enableLocalization: 1
+  localizationKey: UITestLocalization_Image
 --- !u!114 &1936421282
 MonoBehaviour:
   m_ObjectHideFlags: 0

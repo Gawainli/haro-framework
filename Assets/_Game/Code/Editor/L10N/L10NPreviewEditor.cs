@@ -17,6 +17,7 @@ namespace ProxFramework.Editor.L10N
             GetWindow<L10NPreviewEditor>("Localization Preview");
             await DataSystem.Initialize();
             LocalizationModule.Initialize();
+            await LocalizationModule.PreloadFonts();
             LocalizationModule.SetTable(new L10NTable());
         }
 
@@ -42,21 +43,26 @@ namespace ProxFramework.Editor.L10N
 
         void DrawSceneObjectPreview()
         {
+            EditorGUILayout.BeginHorizontal();
+            var previewLang = SettingsUtil.GlobalSettings.l10NSettings.supportedLanguages[selectedLangIndex];
+            if (GUILayout.Button("Refresh"))
+            {
+                LocalizationModule.ChangeLanguage(previewLang);
+                UpdateSceneLocalizedBehaviours();
+            }
+
+            EditorGUILayout.EndHorizontal();
+        }
+
+        private void UpdateSceneLocalizedBehaviours()
+        {
             var localizedBehaviours = FindObjectsOfType<LocalizedBehaviour>();
             foreach (var localizedBehaviour in localizedBehaviours)
             {
-                EditorGUILayout.BeginHorizontal();
-                EditorGUILayout.LabelField(localizedBehaviour.name);
-                var previewLang = SettingsUtil.GlobalSettings.l10NSettings.supportedLanguages[selectedLangIndex];
-                if (GUILayout.Button("Refresh"))
-                {
-                    LocalizationModule.ChangeLanguage(previewLang);
-                    PLogger.Info($"Previewing lang:{previewLang} {localizedBehaviour.name}");
-                    localizedBehaviour.ApplyLocalization();
-                }
-
-                EditorGUILayout.EndHorizontal();
+                localizedBehaviour.ApplyLocalization();
             }
+            
+            SceneView.RepaintAll();
         }
     }
 }

@@ -35,7 +35,6 @@ namespace ProxFramework.Localization
             DefaultLanguage = SettingsUtil.GlobalSettings.l10NSettings.defaultLanguage;
             CurrentLanguage = DefaultLanguage;
             _supportLanguages.AddRange(SettingsUtil.GlobalSettings.l10NSettings.supportedLanguages);
-
             initialized = true;
         }
 
@@ -87,7 +86,7 @@ namespace ProxFramework.Localization
             }
 
             CurrentLanguage = lang;
-            // ChangeFont(CurrentLanguage);
+            ChangeFont(CurrentLanguage);
             OnLanguageChanged?.Invoke();
         }
 
@@ -115,7 +114,7 @@ namespace ProxFramework.Localization
             {
                 if (path.StartsWith(pathPrefix))
                 {
-                    return path.Replace(pathPrefix, $"{pathPrefix}/localized/{code}");
+                    return path.Replace(pathPrefix, $"{pathPrefix}/i18n/{code}");
                 }
             }
 
